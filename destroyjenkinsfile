@@ -1,0 +1,11 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('Destroy') {
+         steps {
+            sh "terraform destroy -auto-approve -var ak=\"${env.AWS_ACCESS_KEY_ID}\" -var sk=\"${env.AWS_SECRET_ACCESS_KEY}\" -var-file dev.tfvars"
+         }
+      }
+   }
+}
